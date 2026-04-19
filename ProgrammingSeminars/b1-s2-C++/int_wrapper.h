@@ -2,6 +2,7 @@
 #define INT_WRAPPER_H
 
 #include <iostream>
+#include <math.h>
 
 class int_wrapper
 {
