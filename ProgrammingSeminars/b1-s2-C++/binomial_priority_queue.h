@@ -30,7 +30,7 @@ public:
 
 	public:
 
-		char const *what() const override
+		char const *what() const noexcept override
 		{
 			return "Can't get/remove maximum from priority queue";
 		}

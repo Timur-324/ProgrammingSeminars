@@ -72,7 +72,7 @@ int insert_node(
 		}
 
 		(*root)->data = value_to_insert;
-		(*root)->subtrees = 2;
+		(*root)->subtrees_count = 2;
 		if (!((*root)->subtrees = (Node **)malloc(sizeof(Node*) * 2)))
 		{
 			free_all_07_03_26(root, NULL);
