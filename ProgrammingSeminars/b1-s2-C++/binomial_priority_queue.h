@@ -195,13 +195,14 @@ public:
 		{
 			merged_trees[i] = nullptr;
 		}
-
+		
 		node *runner = this->_root;
 		do
 		{
 			merged_trees[get_rank(runner)] = runner;
 			runner = runner->brother;
 		} while (runner != this->_root);
+
 
 		node *two_merged_trees;
 		runner = bpq_to_merge_from->_root;
@@ -288,9 +289,9 @@ public:
 		char const *value) override
 	{
 		binomial_priority_queue new_heap(_priorities_comparer);
-		(new_heap._root = create_node(priority, value))->brother = new_heap._root;
+		new_heap._root = create_node(priority, value);
+		new_heap._root->brother = new_heap._root;
 		new_heap._values_count = 1;
-
 		merge(&new_heap);
 	}
 
@@ -380,8 +381,8 @@ private:
 		result->priority = priority;
 		result->value = new char[strlen(value) + 1];
 		strcpy(result->value, value);
-		result->brother = result->children = nullptr;
-		// code --compile-> code' --build-> .exe --obfuscate->
+		result->brother = nullptr;
+		result->children = nullptr;
 		return result;
 	}
 
